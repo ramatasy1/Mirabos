@@ -1,4 +1,12 @@
 console.log('Mirabos est chargé');
+
+// ---------------------------
+// NAVIGATION ENTRE LES SECTIONS
+// ---------------------------
+
+const navLinks = document.querySelectorAll('nav a');
+const sections = document.querySelectorAll('.section');
+
 navLinks.forEach(link => {
     link.addEventListener('click', (event) => {
         event.preventDefault();
@@ -13,31 +21,87 @@ navLinks.forEach(link => {
         link.classList.add('active');
     });
 });
+
+
+// ---------------------------
+// BARRE DE RECHERCHE CLIENTS
+// ---------------------------
+
 const searchBar = document.getElementById('search-bar');
 
-searchBar.addEventListener('input', () => {
-    const value = searchBar.value.toLowerCase();
+if (searchBar) {
+    searchBar.addEventListener('input', () => {
+        const value = searchBar.value.toLowerCase();
+        const rows = document.querySelectorAll('#client-table-body tr');
 
-    const rows = document.querySelectorAll('#client-table-body tr');
-
-    rows.forEach(row => {
-        row.style.display = row.textContent.toLowerCase().includes(value)
-            ? ''
-            : 'none';
+        rows.forEach(row => {
+            row.style.display = row.textContent.toLowerCase().includes(value)
+                ? ''
+                : 'none';
+        });
     });
-});
-document.getElementById('login-btn').addEventListener('click', () => {
-    alert("Connexion réussie !");
+}
 
 
-   
+// ---------------------------
+// CONNEXION (SIMPLIFIÉE)
+// ---------------------------
+
+const loginBtn = document.getElementById('login-btn');
+
+if (loginBtn) {
+    loginBtn.addEventListener('click', () => {
+        alert("Connexion réussie !");
+    });
+}
+
+
+// ---------------------------
+// GESTION DES CLIENTS
+// ---------------------------
+
+const clientForm = document.getElementById('client-form');
+const clientTableBody = document.getElementById('client-table-body');
+
+if (clientForm) {
+    clientForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const name = document.getElementById('client-name').value.trim();
+        const email = document.getElementById('client-email').value.trim();
+        const countryCode = document.getElementById('client-country-code').value;
+        const phone = document.getElementById('client-phone').value.trim();
+
+        if (!name) {
+            alert("Le nom du client est obligatoire.");
+            return;
+        }
+
+        const fullPhone = `${countryCode} ${phone}`;
+
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${name}</td>
+            <td>${email}</td>
+            <td>${fullPhone}</td>
+        `;
+
+        clientTableBody.appendChild(row);
+
+        clientForm.reset();
+        updateClientDropdown();
+    });
+}
+
+
 // ---------------------------
 // GESTION DES FACTURES
 // ---------------------------
 
-// Remplir la liste des clients dans le formulaire de facture
 function updateClientDropdown() {
     const dropdown = document.getElementById('invoice-client');
+    if (!dropdown) return;
+
     dropdown.innerHTML = "";
 
     const rows = document.querySelectorAll('#client-table-body tr');
@@ -51,14 +115,6 @@ function updateClientDropdown() {
     });
 }
 
-// Appeler la fonction à chaque ajout de client
-if (clientForm) {
-    clientForm.addEventListener('submit', () => {
-        updateClientDropdown();
-    });
-}
-
-// Gestion du formulaire de facture
 const invoiceForm = document.getElementById('invoice-form');
 const invoiceTableBody = document.getElementById('invoice-table-body');
 
@@ -69,6 +125,7 @@ if (invoiceForm) {
         const client = document.getElementById('invoice-client').value;
         const description = document.getElementById('invoice-description').value.trim();
         const amount = document.getElementById('invoice-amount').value.trim();
+        const currency = document.getElementById('invoice-currency').value;
 
         if (!client || !description || !amount) {
             alert("Veuillez remplir tous les champs.");
@@ -79,7 +136,7 @@ if (invoiceForm) {
         row.innerHTML = `
             <td>${client}</td>
             <td>${description}</td>
-            <td>${amount} €</td>
+            <td>${amount} ${currency}</td>
         `;
 
         invoiceTableBody.appendChild(row);
@@ -87,8 +144,3 @@ if (invoiceForm) {
         invoiceForm.reset();
     });
 }
-
-
-
-});
-

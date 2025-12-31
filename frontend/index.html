@@ -28,6 +28,7 @@
         </header>
 
         <main>
+
             <!-- Dashboard -->
             <section id="dashboard" class="section active">
                 <div class="cards">
@@ -41,7 +42,7 @@
                     </div>
                     <div class="card">
                         <h3>Chiffre d’affaires</h3>
-                        <p>0 €</p>
+                        <p>0 FCFA</p>
                     </div>
                 </div>
             </section>
@@ -51,13 +52,28 @@
                 <div class="card">
                     <h2>Ajouter un client</h2>
                     <form id="client-form">
-                        <label>Nom</label>
+
+                        <label>Nom complet</label>
                         <input type="text" id="client-name" required>
 
                         <label>Email</label>
                         <input type="email" id="client-email">
 
-                        <label>Téléphone</label>
+                        <label>Indicatif du pays</label>
+                        <select id="client-country-code">
+                            <option value="+225">🇨🇮 Côte d’Ivoire (+225)</option>
+                            <option value="+221">🇸🇳 Sénégal (+221)</option>
+                            <option value="+237">🇨🇲 Cameroun (+237)</option>
+                            <option value="+243">🇨🇩 RDC (+243)</option>
+                            <option value="+261">🇲🇬 Madagascar (+261)</option>
+                            <option value="+229">🇧🇯 Bénin (+229)</option>
+                            <option value="+223">🇲🇱 Mali (+223)</option>
+                            <option value="+228">🇹🇬 Togo (+228)</option>
+                            <option value="+212">🇲🇦 Maroc (+212)</option>
+                            <option value="+216">🇹🇳 Tunisie (+216)</option>
+                        </select>
+
+                        <label>Numéro de téléphone</label>
                         <input type="text" id="client-phone">
 
                         <button type="submit">Ajouter</button>
@@ -85,14 +101,25 @@
                     <h2>Créer une facture</h2>
 
                     <form id="invoice-form">
+
                         <label>Client</label>
                         <select id="invoice-client"></select>
 
                         <label>Description</label>
                         <input type="text" id="invoice-description" required>
 
-                        <label>Montant (€)</label>
+                        <label>Montant</label>
                         <input type="number" id="invoice-amount" required>
+
+                        <label>Monnaie</label>
+                        <select id="invoice-currency">
+                            <option value="FCFA">FCFA</option>
+                            <option value="CDF">CDF (Congo)</option>
+                            <option value="GNF">GNF (Guinée)</option>
+                            <option value="MGA">MGA (Madagascar)</option>
+                            <option value="KES">KES (Kenya)</option>
+                            <option value="ZAR">ZAR (Afrique du Sud)</option>
+                        </select>
 
                         <button type="submit">Créer la facture</button>
                     </form>
@@ -113,7 +140,6 @@
                 </div>
             </section>
 
-
             <!-- Produits -->
             <section id="products" class="section">
                 <div class="card">
@@ -121,6 +147,8 @@
                     <p>Section à venir…</p>
                 </div>
             </section>
+
+            <!-- Contact -->
             <section id="contact" class="section">
                 <div class="card">
                     <h2>Contact</h2>
@@ -131,14 +159,16 @@
                     </p>
 
                     <p><strong>WhatsApp :</strong> 
-                         <a href="https://wa.me/33600000000" target="_blank">Envoyer un message WhatsApp</a>
+                         <a href="https://wa.me/2250700000000" target="_blank">Envoyer un message WhatsApp</a>
                     </p>
 
                     <p><strong>Téléphone :</strong> 
-                        <a href="tel:+33600000000">+33 6 00 00 00 00</a>
+                        <a href="tel:+2250700000000">+225 07 00 00 00 00</a>
                     </p>
                 </div>
             </section>
+
+            <!-- Paramètres -->
             <section id="settings" class="section">
                 <div class="card">
                     <h2>Paramètres</h2>
@@ -146,18 +176,24 @@
                     <label>Nom de l’entreprise</label>
                     <input type="text" placeholder="Mirabos">
 
-                    <label>Adresse email</label>
+                    <label>Email professionnel</label>
                     <input type="email" placeholder="contact@mirabos.com">
 
-                    <label>Thème</label>
+                    <label>Monnaie par défaut</label>
                     <select>
-                        <option>Clair</option>
-                        <option>Sombre</option>
+                        <option>FCFA</option>
+                        <option>CDF</option>
+                        <option>GNF</option>
+                        <option>MGA</option>
+                        <option>KES</option>
+                        <option>ZAR</option>
                     </select>
 
                     <button>Enregistrer</button>
                 </div>
             </section>
+
+            <!-- Connexion -->
             <section id="login" class="section">
                 <div class="card">
                     <h2>Connexion</h2>
@@ -171,6 +207,7 @@
                     <button id="login-btn">Se connecter</button>
                 </div>
             </section>
+
         </main>
     </div>
 
