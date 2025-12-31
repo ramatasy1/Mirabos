@@ -1,61 +1,111 @@
-/* Palette */
+/* ================================
+   VARIABLES (MODE CLAIR)
+================================ */
+
 :root {
-    --blue-dark: #2C3E50;
-    --blue: #3498DB;
-    --gray-light: #ECF0F1;
-    --white: #FFFFFF;
-    --text: #2D2D2D;
+    --sidebar-bg: #2C3E50;
+    --sidebar-text: #ECF0F1;
+    --primary: #3498DB;
+    --primary-hover: #217dbb;
+    --bg: #F4F4F4;
+    --card-bg: #FFFFFF;
+    --text-main: #2D2D2D;
+    --border: #DDDDDD;
+    --shadow: 0 2px 6px rgba(0,0,0,0.08);
+    --radius: 8px;
+    --transition: 0.2s ease;
 }
 
-/* Reset */
-body {
+/* ================================
+   MODE SOMBRE
+================================ */
+
+body.dark-theme {
+    --bg: #1E1E1E;
+    --card-bg: #2A2A2A;
+    --text-main: #F5F5F5;
+    --border: #444;
+    --sidebar-bg: #111827;
+    --sidebar-text: #E5E7EB;
+    --primary: #2563EB;
+    --primary-hover: #1E40AF;
+}
+
+/* ================================
+   GLOBAL
+================================ */
+
+* {
+    box-sizing: border-box;
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: var(--gray-light);
-    color: var(--text);
-    display: flex;
+    padding: 0;
+    font-family: system-ui, sans-serif;
 }
 
-/* Sidebar */
+body {
+    display: flex;
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--text-main);
+}
+
+/* ================================
+   SIDEBAR
+================================ */
+
 .sidebar {
-    width: 230px;
-    background: var(--blue-dark);
-    color: white;
-    height: 100vh;
+    width: 220px;
+    background: var(--sidebar-bg);
+    color: var(--sidebar-text);
     padding: 20px;
 }
 
 .logo {
-    margin: 0 0 30px 0;
-    text-align: center;
+    font-size: 22px;
+    margin-bottom: 25px;
 }
 
 .sidebar nav a {
     display: block;
-    padding: 12px;
-    margin-bottom: 10px;
-    color: white;
+    padding: 10px;
+    margin-bottom: 8px;
+    color: var(--sidebar-text);
     text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
+    border-radius: 6px;
+    transition: var(--transition);
 }
 
-.sidebar nav a:hover,
-.sidebar nav a.active {
-    background: var(--blue);
+.sidebar nav a.active,
+.sidebar nav a:hover {
+    background: var(--primary);
 }
 
-/* Content */
+/* ================================
+   CONTENT
+================================ */
+
 .content {
     flex: 1;
-    padding: 20px;
+    padding: 20px 30px;
 }
 
-header h1 {
-    margin-top: 0;
+header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
-/* Sections */
+#search-bar {
+    margin-left: auto;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid var(--border);
+}
+
+/* ================================
+   SECTIONS
+================================ */
+
 .section {
     display: none;
 }
@@ -64,88 +114,127 @@ header h1 {
     display: block;
 }
 
-/* Cards */
+/* ================================
+   CARDS
+================================ */
+
 .cards {
     display: flex;
     gap: 20px;
 }
 
 .card {
-    background: var(--white);
+    background: var(--card-bg);
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
     margin-bottom: 20px;
 }
 
-/* Form */
-input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
+/* ================================
+   FORMULAIRES
+================================ */
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+label {
+    font-weight: 500;
+}
+
+input, select {
+    padding: 8px;
     border-radius: 5px;
+    border: 1px solid var(--border);
+    background: var(--card-bg);
+    color: var(--text-main);
 }
 
 button {
-    background: var(--blue);
+    padding: 10px;
+    background: var(--primary);
     color: white;
     border: none;
-    padding: 10px 15px;
     border-radius: 5px;
     cursor: pointer;
+    transition: var(--transition);
 }
 
 button:hover {
-    background: #217dbb;
+    background: var(--primary-hover);
 }
 
-/* Table */
+/* ================================
+   TABLEAUX
+================================ */
+
 table {
     width: 100%;
     border-collapse: collapse;
+    background: var(--card-bg);
 }
 
 th, td {
-    padding: 12px;
-    border-bottom: 1px solid #ddd;
-}
-
-/* Barre de recherche */
-#search-bar {
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 250px;
-    margin-left: auto;
-}
-
-/* Liens contact */
-a {
-    color: var(--blue);
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-/* Select */
-select {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-#invoice-form select {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 18px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
+    border-bottom: 1px solid var(--border);
 }
 
 th {
-    background: var(--gray-light);
+    background: #f0f0f0;
+    font-weight: 600;
+}
+
+/* ================================
+   PARAMÈTRES (mise à la ligne)
+================================ */
+
+#settings label,
+#settings input,
+#settings select,
+#settings button {
+    display: block;
+    width: 100%;
+    margin-bottom: 12px;
+}
+
+/* ================================
+   LOGO FACTURE
+================================ */
+
+#invoice-logo {
+    display: block;
+    max-width: 150px;
+    margin-bottom: 15px;
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 800px) {
+    body {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        display: flex;
+        overflow-x: auto;
+    }
+
+    .sidebar nav {
+        display: flex;
+        gap: 10px;
+    }
+
+    .content {
+        padding: 15px;
+    }
+
+    .cards {
+        flex-direction: column;
+    }
 }

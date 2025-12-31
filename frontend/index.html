@@ -34,15 +34,15 @@
                 <div class="cards">
                     <div class="card">
                         <h3>Clients</h3>
-                        <p>0 clients enregistrés</p>
+                        <p><span id="dashboard-clients">0</span> clients enregistrés</p>
                     </div>
                     <div class="card">
                         <h3>Factures</h3>
-                        <p>0 factures créées</p>
+                        <p><span id="dashboard-invoices">0</span> factures créées</p>
                     </div>
                     <div class="card">
                         <h3>Chiffre d’affaires</h3>
-                        <p>0 FCFA</p>
+                        <p><span id="dashboard-revenue">0</span> FCFA</p>
                     </div>
                 </div>
             </section>
@@ -127,6 +127,12 @@
 
                 <div class="card">
                     <h2>Liste des factures</h2>
+
+                    <!-- LOGO AFFICHÉ SUR FACTURE -->
+                    <img id="invoice-logo" src="" alt="Logo entreprise" style="max-width:150px; margin-bottom:15px;">
+
+                    <button id="export-pdf-btn">Imprimer / Enregistrer en PDF</button>
+
                     <table>
                         <thead>
                             <tr>
@@ -143,8 +149,47 @@
             <!-- Produits -->
             <section id="products" class="section">
                 <div class="card">
-                    <h2>Produits</h2>
-                    <p>Section à venir…</p>
+                    <h2>Ajouter un produit</h2>
+                    <form id="product-form">
+                        <label>Nom du produit</label>
+                        <input type="text" id="product-name" required>
+
+                        <label>Prix</label>
+                        <input type="number" id="product-price" required>
+
+                        <label>Monnaie</label>
+                        <select id="product-currency">
+                            <option value="FCFA">FCFA</option>
+                            <option value="CDF">CDF</option>
+                            <option value="GNF">GNF</option>
+                            <option value="MGA">MGA</option>
+                            <option value="KES">KES</option>
+                            <option value="ZAR">ZAR</option>
+                        </select>
+
+                        <label>Stock</label>
+                        <input type="number" id="product-stock" required>
+
+                        <label>Catégorie</label>
+                        <input type="text" id="product-category" placeholder="Ex : Service, Produit physique...">
+
+                        <button type="submit">Ajouter</button>
+                    </form>
+                </div>
+
+                <div class="card">
+                    <h2>Liste des produits</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nom</th>
+                                <th>Prix</th>
+                                <th>Stock</th>
+                                <th>Catégorie</th>
+                            </tr>
+                        </thead>
+                        <tbody id="product-table-body"></tbody>
+                    </table>
                 </div>
             </section>
 
@@ -174,22 +219,32 @@
                     <h2>Paramètres</h2>
 
                     <label>Nom de l’entreprise</label>
-                    <input type="text" placeholder="Mirabos">
+                    <input type="text" id="setting-company-name" placeholder="Mirabos">
 
                     <label>Email professionnel</label>
-                    <input type="email" placeholder="contact@mirabos.com">
+                    <input type="email" id="setting-company-email" placeholder="contact@mirabos.com">
 
                     <label>Monnaie par défaut</label>
-                    <select>
-                        <option>FCFA</option>
-                        <option>CDF</option>
-                        <option>GNF</option>
-                        <option>MGA</option>
-                        <option>KES</option>
-                        <option>ZAR</option>
+                    <select id="setting-default-currency">
+                        <option value="FCFA">FCFA</option>
+                        <option value="CDF">CDF</option>
+                        <option value="GNF">GNF</option>
+                        <option value="MGA">MGA</option>
+                        <option value="KES">KES</option>
+                        <option value="ZAR">ZAR</option>
                     </select>
 
-                    <button>Enregistrer</button>
+                    <label>Thème</label>
+                    <select id="theme-select">
+                        <option value="clair">Clair</option>
+                        <option value="sombre">Sombre</option>
+                    </select>
+
+                    <!-- IMPORT LOGO -->
+                    <label>Logo de l’entreprise</label>
+                    <input type="file" id="setting-logo" accept="image/*">
+
+                    <button id="settings-save-btn">Enregistrer</button>
                 </div>
             </section>
 
