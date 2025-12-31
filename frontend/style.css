@@ -1,40 +1,144 @@
+/* Palette */
+:root {
+    --blue-dark: #2C3E50;
+    --blue: #3498DB;
+    --gray-light: #ECF0F1;
+    --white: #FFFFFF;
+    --text: #2D2D2D;
+}
+
+/* Reset */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #f4f4f4;
-}
-
-header {
-    background: #2c3e50;
-    color: white;
-    padding: 15px 20px;
+    background: var(--gray-light);
+    color: var(--text);
     display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
-header h1 {
-    margin: 0;
-}
-
-nav a {
+/* Sidebar */
+.sidebar {
+    width: 230px;
+    background: var(--blue-dark);
     color: white;
-    margin-left: 20px;
+    height: 100vh;
+    padding: 20px;
+}
+
+.logo {
+    margin: 0 0 30px 0;
+    text-align: center;
+}
+
+.sidebar nav a {
+    display: block;
+    padding: 12px;
+    margin-bottom: 10px;
+    color: white;
     text-decoration: none;
+    border-radius: 5px;
     font-weight: bold;
 }
 
-nav a:hover {
-    text-decoration: underline;
+.sidebar nav a:hover,
+.sidebar nav a.active {
+    background: var(--blue);
 }
 
-main {
+/* Content */
+.content {
+    flex: 1;
     padding: 20px;
+}
+
+header h1 {
+    margin-top: 0;
+}
+
+/* Sections */
+.section {
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+
+/* Cards */
+.cards {
+    display: flex;
+    gap: 20px;
 }
 
 .card {
-    background: white;
+    background: var(--white);
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+/* Form */
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background: var(--blue);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #217dbb;
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Barre de recherche */
+#search-bar {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 250px;
+    margin-left: auto;
+}
+
+/* Liens contact */
+a {
+    color: var(--blue);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Select */
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+th {
+    background: var(--gray-light);
 }
