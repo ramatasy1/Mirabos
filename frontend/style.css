@@ -7,13 +7,14 @@
     --sidebar-text: #ECF0F1;
     --primary: #3498DB;
     --primary-hover: #217dbb;
+    --danger: #c0392b;
     --bg: #F4F4F4;
     --card-bg: #FFFFFF;
     --text-main: #2D2D2D;
     --border: #DDDDDD;
     --shadow: 0 2px 6px rgba(0,0,0,0.08);
     --radius: 8px;
-    --transition: 0.2s ease;
+    --transition: 0.25s ease;
 }
 
 /* ================================
@@ -167,6 +168,14 @@ button:hover {
     background: var(--primary-hover);
 }
 
+button.danger {
+    background: var(--danger);
+}
+
+button.danger:hover {
+    background: #922b21;
+}
+
 /* ================================
    TABLEAUX
 ================================ */
@@ -187,8 +196,32 @@ th {
     font-weight: 600;
 }
 
+.action-btn {
+    padding: 6px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    font-size: 13px;
+}
+
+.edit-btn {
+    background: #27ae60;
+}
+
+.edit-btn:hover {
+    background: #1e8449;
+}
+
+.delete-btn {
+    background: #c0392b;
+}
+
+.delete-btn:hover {
+    background: #922b21;
+}
+
 /* ================================
-   PARAMÈTRES (mise à la ligne)
+   PARAMÈTRES
 ================================ */
 
 #settings label,
@@ -200,6 +233,12 @@ th {
     margin-bottom: 12px;
 }
 
+#logo-preview {
+    display: block;
+    margin-top: 10px;
+    border-radius: 6px;
+}
+
 /* ================================
    LOGO FACTURE
 ================================ */
@@ -208,6 +247,52 @@ th {
     display: block;
     max-width: 150px;
     margin-bottom: 15px;
+}
+
+/* ================================
+   PANEL LATÉRAL (MODIFICATION)
+================================ */
+
+#edit-panel {
+    position: fixed;
+    top: 0;
+    right: -30%;
+    width: 25%;
+    height: 100%;
+    background: var(--card-bg);
+    box-shadow: -2px 0 10px rgba(0,0,0,0.15);
+    transition: var(--transition);
+    z-index: 9999;
+    padding: 20px;
+}
+
+#edit-panel.open {
+    right: 0;
+}
+
+#edit-panel-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+#edit-title {
+    margin-bottom: 20px;
+}
+
+.edit-buttons {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+#edit-cancel {
+    background: var(--danger);
+}
+
+#edit-cancel:hover {
+    background: #922b21;
 }
 
 /* ================================
@@ -236,5 +321,9 @@ th {
 
     .cards {
         flex-direction: column;
+    }
+
+    #edit-panel {
+        width: 80%;
     }
 }
